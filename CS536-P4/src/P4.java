@@ -57,7 +57,7 @@ public class P4 {
             // Name Analysis
             System.out.println("Attempting to analyze names...");
             SymTable stable = new SymTable();
-            ((ASTnode) root.value).nameAnalysis(st);
+            ((ASTnode) root.value).nameAnalysis(stable);
             
             //Failure
             if(ErrMsg.failed) {
