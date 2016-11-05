@@ -1,0 +1,72 @@
+struct Point {
+	int x;
+	int y;
+};
+
+
+void f(int x, bool b) {}
+
+void g() {
+	int a;
+	bool b;
+	struct Point p;
+	p.x = a;
+	b = a == 3;
+	f(a + p.y*2, b);
+	g();
+}
+
+void test(){
+	bool w;
+	int i;
+	int s;
+}
+
+struct Node {
+   struct Point pt;
+};
+
+struct struct1{
+       int foo;
+};
+
+struct struct2{
+        struct struct1 s;
+};
+struct struct3{
+       struct struct2 v;
+};
+
+int test()
+{
+ struct struct3 z;
+ z.v.s.foo = 100;
+}
+
+
+int createNode(int a) {
+    struct Node n;
+    int x;
+    int y;
+    int pt;
+    z = 1;
+    //n.pt = 1;
+    n.pt.x = 1;
+    z=(n.pt.y+1);
+    n.pt.x = a;
+    n.pt = b;
+    if (b == -1) { 
+        x = 4+3*5-y; 
+        while (true) { 
+            y = y*2+x; 
+        } 
+    } 
+    else {
+        x = 0;
+    }
+}
+
+
+
+
+

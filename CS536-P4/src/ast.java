@@ -733,11 +733,17 @@ class VarDeclNode extends DeclNode {
 	 * Name Analysis executes name Analysis
 	 */
 	public void nameAnalysis(SymTable st) {
-
+		this.nameAnalysis(st); // TODO DOUBLE CHECK THIS - could be same var?
 	}
 
 	public void nameAnalysis(SymTable st, SymTable localSt) {
-
+		SemSym s = new SemSym(this.myType.getType());
+		boolean valid = false;
+		String structType = "";
+		
+		if(this.myType.equals("void")){
+			ErrMsg.fatal(this.myId.getLineNum(), this.myId.getCharNum(), ");
+		}
 	}
 
 	/**

@@ -1,0 +1,43 @@
+struct Point {
+	int x;
+	int y;
+};
+
+struct Point { //***Error*** struct with this name has already been declared
+	int x;
+	int y;
+	int z;
+};
+
+struct exampleStruct{
+	int q;//this will work
+	struct exampleStruct es2;
+};
+
+int testFunction(int q, int q){//***ERROR*** Struct fields with same names
+		int q;
+		x = m;
+}
+
+int r;
+int r; //***ERROR*** Multiply declared identifier
+int w;
+
+void n; //***ERROR*** Non-function declared void
+
+
+int main(){
+	int p; //will work
+	struct exampleStruct es; //will work
+	struct fakeStruct fs; //***Error*** Invalid struct name 
+	es.r = 10; //works
+	es.a = 10; //***ERROR*** Invalid struct field name
+	w.r = 10; //***ERROR*** Dot-access of non-struct 
+	
+	es.es2.w = 10; //will work
+	es.es2.a = 10; //***ERROR*** Invalid struct field name
+	
+	f = 20; //***ERROR*** undeclared identifier
+	w= 20;
+}
+
