@@ -101,340 +101,20 @@ import java.util.*;
 //
 // **********************************************************************
 
-// **********************************************************************
-// Type & ErrorType Classes
-//	Types: Bool, Void, Int, String, Struct, StructVar, Function
-//	Error: Error
-// **********************************************************************
-abstract class Type {
-	public abstract int getMyLineNum(); // gets line number
-
-	public abstract int getMyCharNum(); // gets char number
-
-	public abstract String toString(); // gets string
-}
-
-// **********************************************************************
-// BoolType defines type Boolean.
-// **********************************************************************
-class BoolType extends Type {
-	// Constructor
-	public BoolType() {
-
-	}
-
-	// Constructor with variables
-	public BoolType(int lineNum, int charNum) {
-		this.myLineNum = lineNum;
-		this.myCharNum = charNum;
-	}
-
-	// To String
-	public String toString() {
-		return "bool";
-	}
-
-	// Char Num
-	public int getMyLineNum() {
-		return this.myLineNum;
-	}
-
-	// Line Num
-	public int getMyCharNum() {
-		return this.myCharNum;
-	}
-
-	private int myLineNum;
-	private int myCharNum;
-
-}
-// **********************************************************************
-// VoidType defines type Void.
-// **********************************************************************
-
-class VoidType extends Type {
-	// Constructor
-	public VoidType() {
-
-	}
-
-	// Constructor with variables
-	public VoidType(int lineNum, int charNum) {
-		this.myLineNum = lineNum;
-		this.myCharNum = charNum;
-	}
-
-	// To String
-	public String toString() {
-		return "void";
-	}
-
-	// Char Num
-	public int getMyLineNum() {
-		return this.myLineNum;
-	}
-
-	// Line Num
-	public int getMyCharNum() {
-		return this.myCharNum;
-	}
-
-	private int myLineNum;
-	private int myCharNum;
-
-}
-// **********************************************************************
-// IntType defines type Int
-// **********************************************************************
-
-class IntType extends Type {
-	// Constructor
-	public IntType() {
-
-	}
-
-	// Constructor with variables
-	public IntType(int lineNum, int charNum) {
-		this.myLineNum = lineNum;
-		this.myCharNum = charNum;
-	}
-
-	// To String
-	public String toString() {
-		return "int";
-	}
-
-	// Char Num
-	public int getMyLineNum() {
-		return this.myLineNum;
-	}
-
-	// Line Num
-	public int getMyCharNum() {
-		return this.myCharNum;
-	}
-
-	private int myLineNum;
-	private int myCharNum;
-
-}
-
-// **********************************************************************
-// StringType defines type String.
-// **********************************************************************
-class StringType extends Type {
-	// Constructor
-	public StringType() {
-
-	}
-
-	// Constructor with variables
-	public StringType(int lineNum, int charNum) {
-		this.myLineNum = lineNum;
-		this.myCharNum = charNum;
-	}
-
-	// To String
-	public String toString() {
-		return "String"; // capitalized S?
-	}
-
-	// Char Num
-	public int getMyLineNum() {
-		return this.myLineNum;
-	}
-
-	// Line Num
-	public int getMyCharNum() {
-		return this.myCharNum;
-	}
-
-	private int myLineNum;
-	private int myCharNum;
-
-}
-// **********************************************************************
-// StructType defines a struct.
-// **********************************************************************
-
-class StructType extends Type {
-	// Constructor
-	public StructType() {
-
-	}
-
-	// Getter & Setter
-	public StructType(int lineNum, int charNum) {
-		this.myLineNum = lineNum;
-		this.myCharNum = charNum;
-	}
-
-	// To String
-	public String toString() {
-		return "struct";
-	}
-
-	// Char Num
-	public int getMyLineNum() {
-		return this.myLineNum;
-	}
-
-	// Line Num
-	public int getMyCharNum() {
-		return this.myCharNum;
-	}
-
-	private int myLineNum;
-	private int myCharNum;
-
-}
-// **********************************************************************
-// StructVarType defines an instance of a struct.
-// **********************************************************************
-
-class StructVarType extends Type {
-	// Constructor
-	public StructVarType() {
-
-	}
-
-	// Constructor with variables
-	public StructVarType(int lineNum, int charNum) {
-		this.myLineNum = lineNum;
-		this.myCharNum = charNum;
-	}
-
-	// To String
-	public String toString() {
-		return "structvar";
-	}
-
-	// Char Num
-	public int getMyLineNum() {
-		return this.myLineNum;
-	}
-
-	// Line Num
-	public int getMyCharNum() {
-		return this.myCharNum;
-	}
-
-	private int myLineNum;
-	private int myCharNum;
-
-}
-// **********************************************************************
-// FunctionType defines the name of a function.
-// **********************************************************************
-
-class FunctionType extends Type {
-	// Constructor
-	public FunctionType() {
-
-	}
-
-	// Constructor with Variables
-	public FunctionType(int lineNum, int charNum) {
-		this.myLineNum = lineNum;
-		this.myCharNum = charNum;
-	}
-
-	// To String
-	public String toString() {
-		return "function";
-	}
-
-	// Char Num
-	public int getMyCharNum() {
-		return this.myCharNum;
-	}
-
-	// Line Num
-	public int getMyLineNum() {
-		return this.myLineNum;
-	}
-
-	private int myLineNum;
-	private int myCharNum;
-
-}
-// **********************************************************************
-// ErrorType defines the type of error.
-// **********************************************************************
-
-class ErrorType extends Type {
-	public ErrorType() {
-
-	}
-
-	public ErrorType(int lineNum, int charNum) {
-		this.myLineNum = lineNum;
-		this.myCharNum = charNum;
-	}
-
-	public int getMyLineNum() {
-		return this.myLineNum;
-	}
-
-	public int getMyCharNum() {
-		return this.myCharNum;
-	}
-
-	public String toString() {
-		return "error";
-	}
-
-	private int myLineNum;
-	private int myCharNum;
-
-}
-
-// **********************************************************************
-// Success Condition for reporting no errors
-// **********************************************************************
-class Success extends Type {
-	public Success() {
-
-	}
-
-	public Success(int lineNum, int charNum) {
-		this.myLineNum = lineNum;
-		this.myCharNum = charNum;
-	}
-
-	public int getMyLineNum() {
-		return this.myLineNum;
-	}
-
-	public int getMyCharNum() {
-		return this.myCharNum;
-	}
-
-	public String toString() {
-		return "Success";
-	}
-
-	private int myLineNum;
-	private int myCharNum;
-
-}
-
-// **********************************************************************
-// ASTnode class (base class for all other kinds of nodes)
-// **********************************************************************
+/**
+ * AST Node
+ *
+ * Base class for all other nodes. Each node must have unparse, nameAnalysis and
+ * doIndent methods
+ * 
+ */
 
 abstract class ASTnode {
 	// every subclass must provide an unparse operation
 	abstract public void unparse(PrintWriter p, int indent);
 
 	// every subclass must provide a name analysis operation
-	// executes name analysis to check for duplicates, undeclared uses, bad
-	// declarations, bad structs
 	abstract public void nameAnalysis(SymTable st);
-
-	// every subclass must perform type analysis
-	// executes type analysis
-	abstract public Type typeAnalysis();
 
 	// this method can be used by the unparse methods to do indenting
 	protected void doIndent(PrintWriter p, int indent) {
@@ -448,28 +128,29 @@ abstract class ASTnode {
 // StmtListNode, ExpListNode
 // **********************************************************************
 
+/**
+ * Program Node
+ *
+ * Extends ASTnode. Main node
+ * 
+ */
 class ProgramNode extends ASTnode {
 	public ProgramNode(DeclListNode L) {
 		myDeclList = L;
 	}
 
+	public void unparse(PrintWriter p, int indent) {
+		myDeclList.unparse(p, indent);
+	}
+
 	/**
-	 * Name Analysis executes name Analysis for this list of declarations given
-	 * symtable st.
+	 * Name Analysis - Executes name analysis to node
+	 * 
+	 * @param st
+	 *            SymTable of symbols for declarations
 	 */
 	public void nameAnalysis(SymTable st) {
 		this.myDeclList.nameAnalysis(st);
-	}
-
-	/**
-	 * Type Analysis executes Type Analysis for this list of declarations.
-	 */
-	public Type typeAnalysis() {
-		return this.myDeclList.typeAnalysis();
-	}
-
-	public void unparse(PrintWriter p, int indent) {
-		myDeclList.unparse(p, indent);
 	}
 
 	// 1 kid
@@ -479,55 +160,6 @@ class ProgramNode extends ASTnode {
 class DeclListNode extends ASTnode {
 	public DeclListNode(List<DeclNode> S) {
 		myDecls = S;
-	}
-
-	/**
-	 * Name Analysis executes name Analysis
-	 */
-	public void nameAnalysis(SymTable st, SymTable localSt) {
-		Iterator iter = myDecls.iterator();
-		try {
-			while (iter.hasNext()) {
-				((DeclNode) iter.next()).nameAnalysis(st, localSt);
-			}
-		} catch (NoSuchElementException e) {
-			System.err.println(
-					"unexpected NoSuchElementException in DeclListNode.nameAnalysis()");
-			System.exit(-1);
-			;
-		}
-	}
-
-	public void nameAnalysis(SymTable st) {
-		Iterator iter = myDecls.iterator();
-		try {
-			while (iter.hasNext()) {
-				((DeclNode) iter.next()).nameAnalysis(st);
-			}
-		} catch (NoSuchElementException e) {
-			System.err.println(
-					"unexpected NoSuchElementException in DeclListNode.nameAnalysis()");
-			System.exit(-1);
-		}
-
-	}
-
-	/**
-	 * Type Analysis executes Type Analysis
-	 */
-	public Type typeAnalysis() {
-		Iterator iter = myDecls.iterator();
-		try {
-			while (iter.hasNext()) {
-				((DeclNode) iter.next()).typeAnalysis();
-			}
-		} catch (NoSuchElementException e) {
-			System.err.println(
-					"unexpected NoSuchElementException in DeclListNode.typeAnalysis()");
-			System.exit(-1);
-
-		}
-		return new Success();
 	}
 
 	public void unparse(PrintWriter p, int indent) {
@@ -543,6 +175,52 @@ class DeclListNode extends ASTnode {
 		}
 	}
 
+	/**
+	 * Name Analysis - Executes name analysis to node
+	 * 
+	 * @param st
+	 *            SymTable of symbols for declarations
+	 */
+	public void nameAnalysis(SymTable st) {
+		Iterator it = myDecls.iterator();
+		try {
+			while (it.hasNext()) {
+				((DeclNode) it.next()).nameAnalysis(st);
+			}
+		} catch (NoSuchElementException e) {
+			System.err.println(
+					"unexpected NoSuchElementException in DeclListNode.print");
+			System.exit(-1);
+		}
+	}
+
+	/**
+	 * Name Analysis - Executes name analysis to node Checks for bad variables
+	 * and declarations
+	 * 
+	 * @param st
+	 *            SymTable of symbols for declarations
+	 * @param structTable
+	 *            SymTable of symbols for declarations
+	 */
+	public void nameAnalysis(SymTable structTable, SymTable st) {
+		Iterator iter = myDecls.iterator();
+		try {
+			while (iter.hasNext()) {
+				DeclNode next = ((DeclNode) iter.next());
+				if (next instanceof VarDeclNode) {
+					((VarDeclNode) next).nameAnalysis(structTable, st);
+				} else {
+					next.nameAnalysis(st);
+				}
+			}
+		} catch (NoSuchElementException e) {
+			System.err.println(
+					"unexpected NoSuchElementException in DeclListNode.print");
+			System.exit(-1);
+		}
+	}
+
 	// list of kids (DeclNodes)
 	private List<DeclNode> myDecls;
 }
@@ -550,25 +228,7 @@ class DeclListNode extends ASTnode {
 class FormalsListNode extends ASTnode {
 	public FormalsListNode(List<FormalDeclNode> S) {
 		myFormals = S;
-	}
-
-	/**
-	 * Name Analysis executes name Analysis
-	 */
-	public void nameAnalysis(SymTable st) {
-		Iterator<FormalDeclNode> iter = myFormals.iterator();
-		iter.next().nameAnalysis(st);
-	}
-
-	/**
-	 * Type Analysis executes Type Analysis
-	 */
-	public Type typeAnalysis() {
-		return new Success();
-	}
-
-	public List<FormalDeclNode> getFormals() {
-		return this.myFormals;
+		formalsTypes = new LinkedList<String>();
 	}
 
 	public void unparse(PrintWriter p, int indent) {
@@ -582,8 +242,49 @@ class FormalsListNode extends ASTnode {
 		}
 	}
 
+	/**
+	 * Name Analysis - Executes name analysis to node
+	 * 
+	 * @param st
+	 *            SymTable of symbols for declarations
+	 */
+
+	public void nameAnalysis(SymTable st) {
+		Iterator it = myFormals.iterator();
+		try {
+			while (it.hasNext()) {
+				((FormalDeclNode) it.next()).nameAnalysis(st);
+			}
+		} catch (NoSuchElementException ex) {
+			System.err.println(
+					"unexpected NoSuchElementException in DeclListNode.print");
+			System.exit(-1);
+		}
+
+		List<String> lst = formalsTypes;
+		it = myFormals.iterator();
+		try {
+			while (it.hasNext()) {
+				String str = ((FormalDeclNode) it.next()).getType();
+				if (str != null) {
+					lst.add(str);
+				}
+			}
+		} catch (NoSuchElementException ex) {
+			System.err.println(
+					"unexpected NoSuchElementException in DeclListNode.print");
+			System.exit(-1);
+		}
+	}
+
+	public List<String> getFormalsTypes() {
+
+		return formalsTypes;
+	}
+
 	// list of kids (FormalDeclNodes)
 	private List<FormalDeclNode> myFormals;
+	private List<String> formalsTypes;
 }
 
 class FnBodyNode extends ASTnode {
@@ -592,25 +293,20 @@ class FnBodyNode extends ASTnode {
 		myStmtList = stmtList;
 	}
 
-	/**
-	 * Name Analysis executes name Analysis
-	 */
-	public void nameAnalysis(SymTable st) {
-		this.myDeclList.nameAnalysis(st);
-		this.myDeclList.typeAnalysis();
-	}
-
-	/**
-	 * Type Analysis executes Type Analysis
-	 */
-	public Type typeAnalysis() {
-		myDeclList.typeAnalysis();
-		return myStmtList.typeAnalysis();
-	}
-
 	public void unparse(PrintWriter p, int indent) {
 		myDeclList.unparse(p, indent);
 		myStmtList.unparse(p, indent);
+	}
+
+	/**
+	 * Name Analysis - Executes name analysis to node
+	 * 
+	 * @param st
+	 *            SymTable of symbols for declarations
+	 */
+	public void nameAnalysis(SymTable st) {
+		myDeclList.nameAnalysis(st);
+		myStmtList.nameAnalysis(st);
 	}
 
 	// 2 kids
@@ -623,38 +319,24 @@ class StmtListNode extends ASTnode {
 		myStmts = S;
 	}
 
-	/**
-	 * Name Analysis executes name Analysis
-	 */
-	public void nameAnalysis(SymTable st) {
-		Iterator<StmtNode> iter = myStmts.iterator();
-		while (iter.hasNext()) {
-			iter.next().nameAnalysis(st);
-		}
-	}
-
-	/**
-	 * Type Analysis executes Type Analysis
-	 */
-	public Type typeAnalysis() {
-		Iterator<StmtNode> iter = myStmts.iterator();
-		Type retType = null;
-		StmtNode node = null;
-
-		while (iter.hasNext()) {
-			node = iter.next();
-			if (!(node instanceof ReturnStmtNode)) {
-				return new VoidType();
-			}
-		}
-		return retType;
-
-	}
-
 	public void unparse(PrintWriter p, int indent) {
 		Iterator<StmtNode> it = myStmts.iterator();
 		while (it.hasNext()) {
-			it.next().unparse(p, indent, true);
+			it.next().unparse(p, indent);
+		}
+	}
+
+	/**
+	 * Name Analysis - Executes name analysis to node
+	 * 
+	 * @param st
+	 *            SymTable of symbols for declarations
+	 */
+
+	public void nameAnalysis(SymTable st) {
+		Iterator<StmtNode> it = myStmts.iterator();
+		while (it.hasNext()) {
+			it.next().nameAnalysis(st);
 		}
 	}
 
@@ -667,44 +349,29 @@ class ExpListNode extends ASTnode {
 		myExps = S;
 	}
 
-	/**
-	 * Name Analysis executes name Analysis
-	 */
-	public void nameAnalysis(SymTable st) {
-		Iterator<ExpNode> iter = myExps.iterator();
-		while (iter.hasNext()) {
-			iter.next().nameAnalysis(st);
-		}
-	}
-
-	/**
-	 * Type Analysis executes Type Analysis
-	 */
-	public Type typeAnalysis() {
-		Iterator<ExpNode> iter = myExps.iterator();
-		while (iter.hasNext()) {
-			iter.next().typeAnalysis();
-		}
-		return new Success();
-	}
-
 	public void unparse(PrintWriter p, int indent) {
 		Iterator<ExpNode> it = myExps.iterator();
 		if (it.hasNext()) { // if there is at least one element
-			it.next().unparse(p, indent, true);
+			it.next().unparse(p, indent);
 			while (it.hasNext()) { // print the rest of the list
 				p.print(", ");
-				it.next().unparse(p, indent, true);
+				it.next().unparse(p, indent);
 			}
 		}
 	}
 
-	public int getLength() {
-		return this.myExps.size();
-	}
+	/**
+	 * Name Analysis - Executes name analysis to node
+	 * 
+	 * @param st
+	 *            SymTable of symbols for declarations
+	 */
 
-	public List<ExpNode> getList() {
-		return this.myExps;
+	public void nameAnalysis(SymTable st) {
+		Iterator<ExpNode> it = myExps.iterator();
+		while (it.hasNext()) { // if there is at least one element
+			it.next().nameAnalysis(st);
+		}
 	}
 
 	// list of kids (ExpNodes)
@@ -716,10 +383,8 @@ class ExpListNode extends ASTnode {
 // **********************************************************************
 
 abstract class DeclNode extends ASTnode {
-	public abstract void nameAnalysis(SymTable s);
-
-	public abstract void nameAnalysis(SymTable s, SymTable localS);
-
+	public void nameAnalysis(SymTable st) {
+	}
 }
 
 class VarDeclNode extends DeclNode {
@@ -729,49 +394,72 @@ class VarDeclNode extends DeclNode {
 		mySize = size;
 	}
 
-	/**
-	 * Name Analysis executes name Analysis
-	 */
-	public void nameAnalysis(SymTable st) {
-		this.nameAnalysis(st); // TODO DOUBLE CHECK THIS - could be same var?
-	}
-
-	public void nameAnalysis(SymTable st, SymTable localSt) {
-		SemSym s = new SemSym(this.myType.getType());
-		boolean valid = false;
-		String structType = "";
-		
-		if(this.myType.equals("void")){
-			ErrMsg.fatal(this.myId.getLineNum(), this.myId.getCharNum(), ");
-		}
-	}
-
-	/**
-	 * Type Analysis executes Type Analysis
-	 */
-	public Type typeAnalysis() {
-		Type temp = this.myType.getType();
-		switch (temp) {
-		case "bool":
-			return new BoolType();
-		case "int":
-			return new IntType();
-		case "struct":
-			return new StructType();
-		default:
-			System.err.println(
-					"VarDeclNode Type Analysis for " + temp + "failed.");
-			return new ErrorType();
-
-		}
-	}
-
 	public void unparse(PrintWriter p, int indent) {
 		doIndent(p, indent);
 		myType.unparse(p, 0);
 		p.print(" ");
-		myId.unparse(p, 0);
+		myId.unparse(p, 0, false);
 		p.println(";");
+	}
+
+	/**
+	 * Name Analysis - Executes name analysis to node
+	 * 
+	 * @param st
+	 *            SymTable of symbols for declarations
+	 */
+
+	public void nameAnalysis(SymTable st) {
+		nameAnalysis(st, st); // Treat st like a "struct" scope
+	}
+
+	/**
+	 * Name Analysis - Executes name analysis to node Checks for bad variables
+	 * and declarations
+	 * 
+	 * @param st
+	 *            SymTable of symbols for declarations
+	 * @param structTable
+	 *            SymTable of symbols for declarations
+	 */
+	public void nameAnalysis(SymTable structTable, SymTable st) {
+		SemSym sym = null;
+		if (this.myType.getType().equals("void")) { // Void variabe type case
+			ErrMsg.fatal(this.myId.getLineNum(), this.myId.getCharNum(),
+					"Non-function declared void");
+		} else if (!(this.myType instanceof StructNode)) { // Not struct node
+			sym = new SemSym(this.myType.getType());
+		} else { // Is a struct node, find struct decl in symtable
+			IdNode id = ((StructNode) (this.myType)).getId();
+			SemSym structDeclSym = st.lookupGlobal(id.getId());
+
+			// if we find in symtable, create a struct var sym
+			if (structDeclSym != null
+					&& structDeclSym instanceof StructDeclSym) {
+				id.setSym(structDeclSym);
+				sym = new StructVarSym((StructDeclSym) structDeclSym,
+						id.getId());
+			} else {
+				ErrMsg.fatal(id.getLineNum(), id.getCharNum(),
+						"Invalid name of struct type");
+			}
+		}
+
+		// If scope contains variable, we have duplicate
+		if (structTable.lookupLocal(myId.getId()) != null) {
+			ErrMsg.fatal(myId.getLineNum(), myId.getCharNum(),
+					"Multiply declared identifier");
+		} else if (sym != null) { // otherwise, we add sym as var
+
+			try {
+				structTable.addDecl(this.myId.getId(), sym);
+
+			} catch (DuplicateSymException e) {
+				System.out.println("Compiler Error: Duplicate Sym, Line 366");
+			} catch (EmptySymTableException e) {
+				// e.printStackTrace();
+			}
+		}
 	}
 
 	// 3 kids
@@ -791,45 +479,46 @@ class FnDeclNode extends DeclNode {
 		myBody = body;
 	}
 
-	/**
-	 * Name Analysis executes name Analysis
-	 */
-	public void nameAnalysis(SymTable st) {
-		this.nameAnalysis(st);
-	}
-
-	public void nameAnalysis(SymTable st, SymTable localSt) {
-		SemSym s = new FnSym(this.myType.getType(),
-				this.myFormalsList.getFormals());
-
-		try {
-			st.addDecl(this.myId.getID(), s);
-			this.myId.setSym(s);
-		} catch (DuplicateSymException e) {
-			ErrMsg.fatal(this.myId.getLineNum(), this.myId.getCharNum(),
-					"Multiply declared identifier");
-		} catch (EmptySymTableException e) {
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * Type Analysis executes Type Analysis
-	 */
-	public Type typeAnalysis() {
-		// TODO
-	}
-
 	public void unparse(PrintWriter p, int indent) {
 		doIndent(p, indent);
 		myType.unparse(p, 0);
 		p.print(" ");
-		myId.unparse(p, 0);
+		myId.unparse(p, 0, false);
 		p.print("(");
 		myFormalsList.unparse(p, 0);
 		p.println(") {");
 		myBody.unparse(p, indent + 4);
 		p.println("}\n");
+	}
+
+	/**
+	 * Name Analysis - Executes name analysis to node
+	 * 
+	 * @param st
+	 *            SymTable of symbols for declarations
+	 */
+
+	public void nameAnalysis(SymTable st) {
+		SemSym sym = new FnDeclSym(this.myFormalsList.getFormalsTypes(),
+				this.myType.getType());
+		try {
+			st.addDecl(this.myId.getId(), sym);
+			this.myId.setSym(sym);
+		} catch (DuplicateSymException e) {
+			ErrMsg.fatal(this.myId.getLineNum(), this.myId.getCharNum(),
+					"Multiply declared identifier");
+		} catch (EmptySymTableException e) {
+			// e.printStackTrace();
+		}
+		st.addScope(); // New scope within function
+		myFormalsList.nameAnalysis(st);
+		myBody.nameAnalysis(st);
+		try {
+			st.removeScope(); // End of function scope
+		} catch (EmptySymTableException e) {
+			System.out.println("SYSTEM ERROR: EMPTY SCOPE LIST");
+		}
+
 	}
 
 	// 4 kids
@@ -845,32 +534,42 @@ class FormalDeclNode extends DeclNode {
 		myId = id;
 	}
 
-	/**
-	 * Name Analysis executes name Analysis
-	 */
-	public void nameAnalysis(SymTable st) {
-		// TODO
-	}
-
-	public void nameAnalysis(SymTable st, SymTable localSt) {
-		// TODO
-	}
-
-	/**
-	 * Type Analysis executes Type Analysis
-	 */
-	public Type typeAnalysis() {
-		return this.myType.typeAnalysis();
-	}
-
-	public TypeNode getType() {
-		return this.myType;
-	}
-
 	public void unparse(PrintWriter p, int indent) {
 		myType.unparse(p, 0);
 		p.print(" ");
-		myId.unparse(p, 0);
+		myId.unparse(p, 0, false);
+	}
+	/**
+	 * Name Analysis - Executes name analysis to node 
+	 * @param st SymTable of symbols for declarations
+	 */
+
+	public void nameAnalysis(SymTable st) {
+		if (this.myType.getType().equals("void")) {
+			ErrMsg.fatal(this.myId.getLineNum(), this.myId.getCharNum(),
+					"Non-function declared void");
+			return;
+		}
+
+		SemSym sym = new SemSym(this.myType.getType());
+		try {
+			st.addDecl(this.myId.getId(), sym);
+			this.myId.setSym(sym);
+		} catch (DuplicateSymException e) {
+			ErrMsg.fatal(this.myId.getLineNum(), this.myId.getCharNum(),
+					"Multiply declared identifier");
+		} catch (EmptySymTableException e) {
+			// e.printStackTrace();
+		}
+
+	}
+
+	// Returns the type on formal var
+	public String getType() {
+		if (this.myId.getSym() != null)
+			return this.myId.getSym().getType();
+		else
+			return null;
 	}
 
 	// 2 kids
@@ -884,28 +583,37 @@ class StructDeclNode extends DeclNode {
 		myDeclList = declList;
 	}
 
-	/**
-	 * Name Analysis executes name Analysis
-	 */
-	public void nameAnalysis() {
-		// TODO
-	}
-
-	/**
-	 * Type Analysis executes Type Analysis
-	 */
-	public Type typeAnalysis() {
-		// TODO
-	}
-
 	public void unparse(PrintWriter p, int indent) {
 		doIndent(p, indent);
 		p.print("struct ");
-		myId.unparse(p, 0);
+		myId.unparse(p, 0, false);
 		p.println("{");
 		myDeclList.unparse(p, indent + 4);
 		doIndent(p, indent);
 		p.println("};\n");
+
+	}
+	/**
+	 * Name Analysis - Executes name analysis to node 
+	 * @param st SymTable of symbols for declarations
+	 */
+
+	public void nameAnalysis(SymTable st) {
+
+		// Construct symTable sym for usage,populate with inner decls
+		SymTable structTable = new SymTable();
+		myDeclList.nameAnalysis(structTable, st);
+		StructDeclSym sds = new StructDeclSym(structTable, myId.getId());
+
+		// Check if name defined in SymbolTable already, add
+		try {
+			st.addDecl(myId.getId(), sds);
+			myId.setSym(sds);
+		} catch (DuplicateSymException ex) {
+			ErrMsg.fatal(this.myId.getLineNum(), this.myId.getCharNum(),
+					"Multiply declared identifier");
+		} catch (EmptySymTableException ex) {
+		}
 
 	}
 
@@ -919,33 +627,27 @@ class StructDeclNode extends DeclNode {
 // **********************************************************************
 
 abstract class TypeNode extends ASTnode {
-	abstract public String getType();
+	public void unparse(PrintWriter p, int indent) {
+	}
+
+	public String getType() {
+		return null;
+	}
+
+	public void nameAnalysis(SymTable st) {
+	}
 }
 
 class IntNode extends TypeNode {
 	public IntNode() {
 	}
 
-	/**
-	 * Name Analysis executes name Analysis
-	 */
-	public void nameAnalysis(SymTable st) {
-		// No Name Analysis
-	}
-
-	/**
-	 * Type Analysis executes Type Analysis
-	 */
-	public Type typeAnalysis() {
-		return new IntType();
+	public void unparse(PrintWriter p, int indent) {
+		p.print("int");
 	}
 
 	public String getType() {
 		return "int";
-	}
-
-	public void unparse(PrintWriter p, int indent) {
-		p.print("int");
 	}
 }
 
@@ -953,26 +655,12 @@ class BoolNode extends TypeNode {
 	public BoolNode() {
 	}
 
-	/**
-	 * Name Analysis executes name Analysis
-	 */
-	public void nameAnalysis(SymTable st) {
-		// No Name Analysis
-	}
-
-	/**
-	 * Type Analysis executes Type Analysis
-	 */
-	public Type typeAnalysis() {
-		return new BoolType();
+	public void unparse(PrintWriter p, int indent) {
+		p.print("bool");
 	}
 
 	public String getType() {
 		return "bool";
-	}
-
-	public void unparse(PrintWriter p, int indent) {
-		p.print("bool");
 	}
 }
 
@@ -980,26 +668,12 @@ class VoidNode extends TypeNode {
 	public VoidNode() {
 	}
 
-	/**
-	 * Name Analysis executes name Analysis
-	 */
-	public void nameAnalysis(SymTable st) {
-		// Do nothing
-	}
-
-	/**
-	 * Type Analysis executes Type Analysis
-	 */
-	public Type typeAnalysis() {
-		return new VoidType();
+	public void unparse(PrintWriter p, int indent) {
+		p.print("void");
 	}
 
 	public String getType() {
 		return "void";
-	}
-
-	public void unparse(PrintWriter p, int indent) {
-		p.print("void");
 	}
 }
 
@@ -1008,35 +682,17 @@ class StructNode extends TypeNode {
 		myId = id;
 	}
 
-	/**
-	 * Name Analysis executes name Analysis
-	 */
-	public void nameAnalysis(SymTable st) {
-		// TODO
-	}
-
-	/**
-	 * Type Analysis executes Type Analysis
-	 */
-	public Type typeAnalysis() {
-		return new StructType(this.myId.getLineNum(), this.myId.getCharNum());
+	public void unparse(PrintWriter p, int indent) {
+		p.print("struct ");
+		myId.unparse(p, 0, false);
 	}
 
 	public String getType() {
-		return "struct";
-	}
-
-	public String getStructType() {
-		return this.myId.getId();
+		return myId.getId();
 	}
 
 	public IdNode getId() {
-		return this.myId;
-	}
-
-	public void unparse(PrintWriter p, int indent) {
-		p.print("struct ");
-		myId.unparse(p, 0);
+		return myId;
 	}
 
 	// 1 kid
@@ -1048,8 +704,9 @@ class StructNode extends TypeNode {
 // **********************************************************************
 
 abstract class StmtNode extends ASTnode {
+	public void nameAnalysis(SymTable st) {
 
-	public abstract void unparse(PrintWriter p, int indent, boolean use);
+	}
 }
 
 class AssignStmtNode extends StmtNode {
@@ -1057,28 +714,21 @@ class AssignStmtNode extends StmtNode {
 		myAssign = assign;
 	}
 
-	/**
-	 * Name Analysis executes name Analysis
-	 */
-	public void nameAnalysis(SymTable st) {
-		this.myAssign.nameAnalysis(st);
-	}
-
-	/**
-	 * Type Analysis executes Type Analysis
-	 */
-	public Type typeAnalysis() {
-		return this.myAssign.typeAnalysis();
-	}
-
-	public void unparse(PrintWriter p, int indent, boolean use) {
-		unparse(p, indent);
-	}
-
 	public void unparse(PrintWriter p, int indent) {
 		doIndent(p, indent);
-		myAssign.unparse(p, -1, true); // no parentheses
+		myAssign.unparse(p, -1); // no parentheses
 		p.println(";");
+	}
+
+	/**
+	 * Name Analysis - Executes name analysis to node
+	 * 
+	 * @param st
+	 *            SymTable of symbols for declarations
+	 */
+
+	public void nameAnalysis(SymTable st) {
+		myAssign.nameAnalysis(st);
 	}
 
 	// 1 kid
@@ -1090,28 +740,21 @@ class PostIncStmtNode extends StmtNode {
 		myExp = exp;
 	}
 
-	/**
-	 * Name Analysis executes name Analysis
-	 */
-	public void nameAnalysis(SymTable st) {
-		this.myExp.nameAnalysis(st);
-	}
-
-	/**
-	 * Type Analysis executes Type Analysis
-	 */
-	public Type typeAnalysis() {
-		// TODO
-	}
-
-	public void unparse(PrintWriter p, int indent, boolean use) {
-		unparse(p, indent);
-	}
-
 	public void unparse(PrintWriter p, int indent) {
 		doIndent(p, indent);
-		myExp.unparse(p, 0, true);
+		myExp.unparse(p, 0);
 		p.println("++;");
+	}
+
+	/**
+	 * Name Analysis - Executes name analysis to node
+	 * 
+	 * @param st
+	 *            SymTable of symbols for declarations
+	 */
+
+	public void nameAnalysis(SymTable st) {
+		myExp.nameAnalysis(st);
 	}
 
 	// 1 kid
@@ -1123,28 +766,21 @@ class PostDecStmtNode extends StmtNode {
 		myExp = exp;
 	}
 
-	/**
-	 * Name Analysis executes name Analysis
-	 */
-	public void nameAnalysis(SymTable st) {
-		this.myExp.nameAnalysis(st);
-	}
-
-	/**
-	 * Type Analysis executes Type Analysis
-	 */
-	public Type typeAnalysis() {
-		// TODO
-	}
-
-	public void unparse(PrintWriter p, int indent, boolean use) {
-		unparse(p, indent);
-	}
-
 	public void unparse(PrintWriter p, int indent) {
 		doIndent(p, indent);
-		myExp.unparse(p, 0, true);
+		myExp.unparse(p, 0);
 		p.println("--;");
+	}
+
+	/**
+	 * Name Analysis - Executes name analysis to node
+	 * 
+	 * @param st
+	 *            SymTable of symbols for declarations
+	 */
+
+	public void nameAnalysis(SymTable st) {
+		myExp.nameAnalysis(st);
 	}
 
 	// 1 kid
@@ -1156,29 +792,22 @@ class ReadStmtNode extends StmtNode {
 		myExp = e;
 	}
 
-	/**
-	 * Name Analysis executes name Analysis
-	 */
-	public void nameAnalysis(SymTable st) {
-		this.myExp.nameAnalysis(st);
-	}
-
-	/**
-	 * Type Analysis executes Type Analysis
-	 */
-	public Type typeAnalysis() {
-		// TODO
-	}
-
-	public void unparse(PrintWriter p, int indent, boolean use) {
-		unparse(p, indent);
-	}
-
 	public void unparse(PrintWriter p, int indent) {
 		doIndent(p, indent);
 		p.print("cin >> ");
-		myExp.unparse(p, 0, true);
+		myExp.unparse(p, 0);
 		p.println(";");
+	}
+
+	/**
+	 * Name Analysis - Executes name analysis to node
+	 * 
+	 * @param st
+	 *            SymTable of symbols for declarations
+	 */
+
+	public void nameAnalysis(SymTable st) {
+		myExp.nameAnalysis(st);
 	}
 
 	// 1 kid (actually can only be an IdNode or an ArrayExpNode)
@@ -1190,29 +819,22 @@ class WriteStmtNode extends StmtNode {
 		myExp = exp;
 	}
 
-	/**
-	 * Name Analysis executes name Analysis
-	 */
-	public void nameAnalysis(SymTable st) {
-		// TODO
-	}
-
-	/**
-	 * Type Analysis executes Type Analysis
-	 */
-	public Type typeAnalysis() {
-		// TODO
-	}
-
-	public void unparse(PrintWriter p, int indent, boolean use) {
-		unparse(p, indent);
-	}
-
 	public void unparse(PrintWriter p, int indent) {
 		doIndent(p, indent);
 		p.print("cout << ");
-		myExp.unparse(p, 0, true);
+		myExp.unparse(p, 0);
 		p.println(";");
+	}
+
+	/**
+	 * Name Analysis - Executes name analysis to node
+	 * 
+	 * @param st
+	 *            SymTable of symbols for declarations
+	 */
+
+	public void nameAnalysis(SymTable st) {
+		myExp.nameAnalysis(st);
 	}
 
 	// 1 kid
@@ -1226,33 +848,34 @@ class IfStmtNode extends StmtNode {
 		myStmtList = slist;
 	}
 
-	/**
-	 * Name Analysis executes name Analysis
-	 */
-	public void nameAnalysis(SymTable st) {
-		// TODO
-	}
-
-	/**
-	 * Type Analysis executes Type Analysis
-	 */
-	public Type typeAnalysis() {
-		// TODO
-	}
-
-	public void unparse(PrintWriter p, int indent, boolean use) {
-		unparse(p, indent);
-	}
-
 	public void unparse(PrintWriter p, int indent) {
 		doIndent(p, indent);
 		p.print("if (");
-		myExp.unparse(p, 0, true);
+		myExp.unparse(p, 0);
 		p.println(") {");
 		myDeclList.unparse(p, indent + 4);
 		myStmtList.unparse(p, indent + 4);
 		doIndent(p, indent);
 		p.println("}");
+	}
+
+	/**
+	 * Name Analysis - Executes name analysis to node
+	 * 
+	 * @param st
+	 *            SymTable of symbols for declarations
+	 */
+
+	public void nameAnalysis(SymTable st) {
+
+		myExp.nameAnalysis(st);
+		st.addScope();
+		myDeclList.nameAnalysis(st);
+		myStmtList.nameAnalysis(st);
+		try {
+			st.removeScope();
+		} catch (EmptySymTableException e) {
+		}
 	}
 
 	// e kids
@@ -1271,28 +894,10 @@ class IfElseStmtNode extends StmtNode {
 		myElseStmtList = slist2;
 	}
 
-	/**
-	 * Name Analysis executes name Analysis
-	 */
-	public void nameAnalysis(SymTable st) {
-		// TODO
-	}
-
-	/**
-	 * Type Analysis executes Type Analysis
-	 */
-	public Type typeAnalysis() {
-		// TODO
-	}
-
-	public void unparse(PrintWriter p, int indent, boolean use) {
-		unparse(p, indent);
-	}
-
 	public void unparse(PrintWriter p, int indent) {
 		doIndent(p, indent);
 		p.print("if (");
-		myExp.unparse(p, 0, true);
+		myExp.unparse(p, 0);
 		p.println(") {");
 		myThenDeclList.unparse(p, indent + 4);
 		myThenStmtList.unparse(p, indent + 4);
@@ -1304,6 +909,32 @@ class IfElseStmtNode extends StmtNode {
 		myElseStmtList.unparse(p, indent + 4);
 		doIndent(p, indent);
 		p.println("}");
+	}
+
+	/**
+	 * Name Analysis - Executes name analysis to node
+	 * 
+	 * @param st
+	 *            SymTable of symbols for declarations
+	 */
+
+	public void nameAnalysis(SymTable st) {
+
+		myExp.nameAnalysis(st);
+		st.addScope();
+		myThenDeclList.nameAnalysis(st);
+		myThenStmtList.nameAnalysis(st);
+		try {
+			st.removeScope();
+		} catch (EmptySymTableException e) {
+		}
+		st.addScope();
+		myElseDeclList.nameAnalysis(st);
+		myElseStmtList.nameAnalysis(st);
+		try {
+			st.removeScope();
+		} catch (EmptySymTableException e) {
+		}
 	}
 
 	// 5 kids
@@ -1321,33 +952,34 @@ class WhileStmtNode extends StmtNode {
 		myStmtList = slist;
 	}
 
-	/**
-	 * Name Analysis executes name Analysis
-	 */
-	public void nameAnalysis(SymTable st) {
-		// TODO
-	}
-
-	/**
-	 * Type Analysis executes Type Analysis
-	 */
-	public Type typeAnalysis() {
-		// TODO
-	}
-
-	public void unparse(PrintWriter p, int indent, boolean use) {
-		unparse(p, indent);
-	}
-
 	public void unparse(PrintWriter p, int indent) {
 		doIndent(p, indent);
 		p.print("while (");
-		myExp.unparse(p, 0, true);
+		myExp.unparse(p, 0);
 		p.println(") {");
 		myDeclList.unparse(p, indent + 4);
 		myStmtList.unparse(p, indent + 4);
 		doIndent(p, indent);
 		p.println("}");
+	}
+
+	/**
+	 * Name Analysis - Executes name analysis to node
+	 * 
+	 * @param st
+	 *            SymTable of symbols for declarations
+	 */
+
+	public void nameAnalysis(SymTable st) {
+
+		myExp.nameAnalysis(st);
+		st.addScope();
+		myDeclList.nameAnalysis(st);
+		myStmtList.nameAnalysis(st);
+		try {
+			st.removeScope();
+		} catch (EmptySymTableException e) {
+		}
 	}
 
 	// 3 kids
@@ -1361,28 +993,21 @@ class CallStmtNode extends StmtNode {
 		myCall = call;
 	}
 
-	/**
-	 * Name Analysis executes name Analysis
-	 */
-	public void nameAnalysis(SymTable st) {
-		this.myCall.nameAnalysis(st);
-	}
-
-	/**
-	 * Type Analysis executes Type Analysis
-	 */
-	public Type typeAnalysis() {
-		return this.myCall.typeAnalysis();
-	}
-
-	public void unparse(PrintWriter p, int indent, boolean use) {
-		unparse(p, indent);
-	}
-
 	public void unparse(PrintWriter p, int indent) {
 		doIndent(p, indent);
-		myCall.unparse(p, indent, true);
+		myCall.unparse(p, indent);
 		p.println(";");
+	}
+
+	/**
+	 * Name Analysis - Executes name analysis to node
+	 * 
+	 * @param st
+	 *            SymTable of symbols for declarations
+	 */
+
+	public void nameAnalysis(SymTable st) {
+		myCall.nameAnalysis(st);
 	}
 
 	// 1 kid
@@ -1394,38 +1019,25 @@ class ReturnStmtNode extends StmtNode {
 		myExp = exp;
 	}
 
-	/**
-	 * Name Analysis executes name Analysis
-	 */
-	public void nameAnalysis(SymTable st) {
-		if (myExp != null) {
-			this.myExp.nameAnalysis(st);
-		}
-	}
-
-	/**
-	 * Type Analysis executes Type Analysis
-	 */
-	public Type typeAnalysis() {
-		if (myExp != null) {
-			return this.myExp.typeAnalysis();
-		} else {
-			return new VoidType(0, 0);
-		}
-	}
-
-	public void unparse(PrintWriter p, int indent, boolean use) {
-		unparse(p, indent);
-	}
-
 	public void unparse(PrintWriter p, int indent) {
 		doIndent(p, indent);
 		p.print("return");
 		if (myExp != null) {
 			p.print(" ");
-			myExp.unparse(p, 0, true);
+			myExp.unparse(p, 0);
 		}
 		p.println(";");
+	}
+
+	/**
+	 * Name Analysis - Executes name analysis to node
+	 * 
+	 * @param st
+	 *            SymTable of symbols for declarations
+	 */
+
+	public void nameAnalysis(SymTable st) {
+		myExp.nameAnalysis(st);
 	}
 
 	// 1 kid
@@ -1437,7 +1049,11 @@ class ReturnStmtNode extends StmtNode {
 // **********************************************************************
 
 abstract class ExpNode extends ASTnode {
-	public abstract void unparse(PrintWriter p, int indent, boolean use);
+	abstract public void unparse(PrintWriter p, int indent);
+
+	public void nameAnalysis(SymTable st) {
+
+	}
 }
 
 class IntLitNode extends ExpNode {
@@ -1445,24 +1061,6 @@ class IntLitNode extends ExpNode {
 		myLineNum = lineNum;
 		myCharNum = charNum;
 		myIntVal = intVal;
-	}
-
-	/**
-	 * Name Analysis executes name Analysis
-	 */
-	public void nameAnalysis(SymTable st) {
-		// Do nothing
-	}
-
-	/**
-	 * Type Analysis executes Type Analysis
-	 */
-	public Type typeAnalysis() {
-		return new IntType(this.myLineNum, this.myCharNum);
-	}
-
-	public void unparse(PrintWriter p, int indent, boolean use) {
-		unparse(p, indent);
 	}
 
 	public void unparse(PrintWriter p, int indent) {
@@ -1481,26 +1079,19 @@ class StringLitNode extends ExpNode {
 		myStrVal = strVal;
 	}
 
-	/**
-	 * Name Analysis executes name Analysis
-	 */
-	public void nameAnalysis(SymTable st) {
-		// Do nothing
-	}
-
-	/**
-	 * Type Analysis executes Type Analysis
-	 */
-	public Type typeAnalysis() {
-		return new StringType(this.myLineNum, this.myCharNum);
-	}
-
-	public void unparse(PrintWriter p, int indent, boolean use) {
-		unparse(p, indent);
-	}
-
 	public void unparse(PrintWriter p, int indent) {
 		p.print(myStrVal);
+	}
+
+	/**
+	 * Name Analysis - Executes name analysis to node
+	 * 
+	 * @param st
+	 *            SymTable of symbols for declarations
+	 */
+
+	public void nameAnalysis(SymTable st) {
+		return;
 	}
 
 	private int myLineNum;
@@ -1514,26 +1105,19 @@ class TrueNode extends ExpNode {
 		myCharNum = charNum;
 	}
 
-	/**
-	 * Name Analysis executes name Analysis
-	 */
-	public void nameAnalysis(SymTable st) {
-		// Do Nothing
-	}
-
-	/**
-	 * Type Analysis executes Type Analysis
-	 */
-	public Type typeAnalysis() {
-		return new BoolType(this.myLineNum, this.myCharNum);
-	}
-
-	public void unparse(PrintWriter p, int indent, boolean use) {
-		unparse(p, indent);
-	}
-
 	public void unparse(PrintWriter p, int indent) {
 		p.print("true");
+	}
+
+	/**
+	 * Name Analysis - Executes name analysis to node
+	 * 
+	 * @param st
+	 *            SymTable of symbols for declarations
+	 */
+
+	public void nameAnalysis(SymTable st) {
+		return;
 	}
 
 	private int myLineNum;
@@ -1546,26 +1130,19 @@ class FalseNode extends ExpNode {
 		myCharNum = charNum;
 	}
 
-	/**
-	 * Name Analysis executes name Analysis
-	 */
-	public void nameAnalysis(SymTable st) {
-		// Do nothing
-	}
-
-	/**
-	 * Type Analysis executes Type Analysis
-	 */
-	public Type typeAnalysis() {
-		return new BoolType(this.myLineNum, this.myCharNum);
-	}
-
-	public void unparse(PrintWriter p, int indent, boolean use) {
-		unparse(p, indent);
-	}
-
 	public void unparse(PrintWriter p, int indent) {
 		p.print("false");
+	}
+
+	/**
+	 * Name Analysis - Executes name analysis to node
+	 * 
+	 * @param st
+	 *            SymTable of symbols for declarations
+	 */
+
+	public void nameAnalysis(SymTable st) {
+		return;
 	}
 
 	private int myLineNum;
@@ -1577,55 +1154,43 @@ class IdNode extends ExpNode {
 		myLineNum = lineNum;
 		myCharNum = charNum;
 		myStrVal = strVal;
+		mySym = null;
 	}
 
-	/**
-	 * Name Analysis executes name Analysis
-	 */
-	public void nameAnalysis(SymTable st) {
-		SemSym s = st.lookupGlobal(myStrVal);
-		if (s == null) {
-			ErrMsg.fatal(myLineNum, myCharNum, "Undeclared identifier");
-		} else {
-			this.setSym(s);
-		}
-	}
-
-	/**
-	 * Type Analysis executes Type Analysis
-	 */
-	public Type typeAnalysis() {
-		if (this.sym instanceof FnSym) {
-			return new FunctionType(this.myLineNum, this.myCharNum);
-		}
-
-		else if (this.sym instanceof StructSym) {
-			return new StructType(this.myLineNum, this.myCharNum);
-		}
-
-		else if (this.sym instanceof StructVarSym) {
-			return new StructVarType(this.myLineNum, this.myCharNum);
-		}
-
-		switch (this.sym.getType()) {
-		case "int":
-			return new IntType(this.myLineNum, this.myCharNum);
-		case "bool":
-			return new BoolType(this.myLineNum, this.myCharNum);
-		default:
-			return new ErrType(this.myLineNum, this.myCharNum);
-		}
+	public void unparse(PrintWriter p, int indent) {
+		unparse(p, indent, true);
 	}
 
 	public void unparse(PrintWriter p, int indent, boolean use) {
 		p.print(myStrVal);
-		if (sym != null && use) {
-			p.println("(" + sym.toString() + ")");
+		if (mySym != null && use) {
+			p.print("(" + mySym.toString() + ")");
 		}
 	}
 
-	public void unparse(PrintWriter p, int indent) {
-		unparse(p, indent, false);
+	/**
+	 * Name Analysis - Executes name analysis to node
+	 * 
+	 * @param st
+	 *            SymTable of symbols for declarations
+	 */
+
+	public void nameAnalysis(SymTable st) {
+		SemSym sym = st.lookupGlobal(myStrVal);
+		// Undeclared identifier used
+		if (sym == null) {
+			ErrMsg.fatal(myLineNum, myCharNum, "Undeclared identifier");
+		} else {
+			this.setSym(sym);
+		}
+	}
+
+	public SemSym getSym() {
+		return mySym;
+	}
+
+	public void setSym(SemSym sym) {
+		this.mySym = sym;
 	}
 
 	public int getLineNum() {
@@ -1640,54 +1205,126 @@ class IdNode extends ExpNode {
 		return this.myStrVal;
 	}
 
-	public SemSym getSym() {
-		return this.sym;
-	}
-
-	public void setSym(SemSym sym) {
-		this.sym = sym;
-	}
-
 	private int myLineNum;
 	private int myCharNum;
 	private String myStrVal;
-	private SemSym sym;
+	private SemSym mySym;
 }
 
+/*
+ * Name analysis on Dot access node Checks if RHS is struct, LHS is field of
+ * struct Associates Node with a mySym Uses hasFailed to signify name analysis
+ * error, prevents chained error printing from multiple dot accesses
+ */
 class DotAccessExpNode extends ExpNode {
 	public DotAccessExpNode(ExpNode loc, IdNode id) {
 		myLoc = loc;
 		myId = id;
-	}
-
-	/**
-	 * Name Analysis executes name Analysis
-	 */
-	public void nameAnalysis() {
-		// TODO
-	}
-
-	/**
-	 * Type Analysis executes Type Analysis
-	 */
-	public Type typeAnalysis() {
-		// TODO
-	}
-
-	public void unparse(PrintWriter p, int indent, boolean use) {
-		unparse(p, indent);
+		mySym = null;
 	}
 
 	public void unparse(PrintWriter p, int indent) {
-		p.print("(");
-		myLoc.unparse(p, 0, true);
-		p.print(").");
-		myId.unparse(p, 0, true);
+		myLoc.unparse(p, 0);
+		p.print(".");
+		myId.unparse(p, 0);
+	}
+
+	/**
+	 * Name Analysis - Executes name analysis to node
+	 * 
+	 * @param st
+	 *            SymTable of symbols for declarations
+	 */
+
+	public void nameAnalysis(SymTable st) {
+
+		SymTable subTable = null;
+
+		myLoc.nameAnalysis(st);
+
+		// Get subtable from sym to check for var
+		if (myLoc instanceof IdNode) {
+			SemSym locSym = ((IdNode) myLoc).getSym();
+
+			if (locSym != null && (locSym instanceof StructVarSym)) {
+				StructDeclSym structDecl = ((StructVarSym) locSym).getDecl();
+				subTable = structDecl.getFields();
+			} else if (locSym == null) {
+				this.hasFailed = true;
+				return;
+			} else { // LHS is not a struct type
+				ErrMsg.fatal(((IdNode) myLoc).getLineNum(),
+						((IdNode) myLoc).getCharNum(),
+						"Dot-access of non-struct type");
+				this.hasFailed = true;
+				return;
+			}
+
+		}
+		// If Dot Access, use sym value from recursive call
+		else if (myLoc instanceof DotAccessExpNode) {
+			if (((DotAccessExpNode) myLoc).hasFailed()) {
+				this.hasFailed = true;
+				return;
+			} else {
+				SemSym locSym = ((DotAccessExpNode) myLoc).getSym();
+				// No struct in myLoc
+				if (locSym == null) {
+					IdNode id = ((DotAccessExpNode) myLoc).getId();
+					ErrMsg.fatal(id.getLineNum(), id.getCharNum(),
+							"Dot-access of non-struct type");
+					this.hasFailed = true;
+					return;
+				}
+				// Get symbol table for struct
+				else {
+					// SemSym structDecl =
+					// ((StructDeclSym)locSym).getId().getSym();
+					if (locSym != null && (locSym instanceof StructVarSym)) {
+						StructDeclSym structDecl = ((StructVarSym) locSym)
+								.getDecl();
+						subTable = ((StructDeclSym) structDecl).getFields();
+					}
+				}
+			}
+		}
+
+		// Check if field name exists in struct
+		if (subTable != null) {
+			SemSym sym = subTable.lookupGlobal(this.myId.getId());
+			if (sym == null) {
+				ErrMsg.fatal(myId.getLineNum(), myId.getCharNum(),
+						"Invalid struct field name");
+				this.hasFailed = true;
+			} else {
+				myId.setSym(sym);
+				if (sym instanceof StructVarSym) {
+					this.mySym = ((StructVarSym) sym);
+				}
+			}
+
+		} else {
+			System.out.println("Compiler Error, line 1071");
+		}
+	}
+
+	public SemSym getSym() {
+		return this.mySym;
+	}
+
+	public IdNode getId() {
+		return this.myId;
+	}
+
+	public boolean hasFailed() {
+		return this.hasFailed;
 	}
 
 	// 2 kids
 	private ExpNode myLoc;
 	private IdNode myId;
+	private SemSym mySym;
+	private boolean hasFailed;
 }
 
 class AssignNode extends ExpNode {
@@ -1696,32 +1333,26 @@ class AssignNode extends ExpNode {
 		myExp = exp;
 	}
 
-	/**
-	 * Name Analysis executes name Analysis
-	 */
-	public void nameAnalysis(SymTable st) {
-		// TODO
-	}
-
-	/**
-	 * Type Analysis executes Type Analysis
-	 */
-	public Type typeAnalysis() {
-		// TODO
-	}
-
-	public void unparse(PrintWriter p, int indent, boolean use) {
-		unparse(p, indent);
-	}
-
 	public void unparse(PrintWriter p, int indent) {
 		if (indent != -1)
 			p.print("(");
-		myLhs.unparse(p, 0, true);
+		myLhs.unparse(p, 0);
 		p.print(" = ");
-		myExp.unparse(p, 0, true);
+		myExp.unparse(p, 0);
 		if (indent != -1)
 			p.print(")");
+	}
+
+	/**
+	 * Name Analysis - Executes name analysis to node
+	 * 
+	 * @param st
+	 *            SymTable of symbols for declarations
+	 */
+
+	public void nameAnalysis(SymTable st) {
+		myLhs.nameAnalysis(st);
+		myExp.nameAnalysis(st);
 	}
 
 	// 2 kids
@@ -1740,32 +1371,26 @@ class CallExpNode extends ExpNode {
 		myExpList = new ExpListNode(new LinkedList<ExpNode>());
 	}
 
-	/**
-	 * Name Analysis executes name Analysis
-	 */
-	public void nameAnalysis() {
-		// TODO
-	}
-
-	/**
-	 * Type Analysis executes Type Analysis
-	 */
-	public Type typeAnalysis() {
-		// TODO
-	}
-
-	public void unparse(PrintWriter p, int indent, boolean use) {
-		unparse(p, indent);
-	}
-
+	// ** unparse **
 	public void unparse(PrintWriter p, int indent) {
-		// TODO MORE
-		myId.unparse(p, 0, true);
+		myId.unparse(p, 0);
 		p.print("(");
 		if (myExpList != null) {
-			myExpList.unparse(p, 0, true);
+			myExpList.unparse(p, 0);
 		}
 		p.print(")");
+	}
+
+	/**
+	 * Name Analysis - Executes name analysis to node
+	 * 
+	 * @param st
+	 *            SymTable of symbols for declarations
+	 */
+
+	public void nameAnalysis(SymTable st) {
+		myId.nameAnalysis(st);
+		myExpList.nameAnalysis(st);
 	}
 
 	// 2 kids
@@ -1778,6 +1403,17 @@ abstract class UnaryExpNode extends ExpNode {
 		myExp = exp;
 	}
 
+	/**
+	 * Name Analysis - Executes name analysis to node
+	 * 
+	 * @param st
+	 *            SymTable of symbols for declarations
+	 */
+
+	public void nameAnalysis(SymTable st) {
+		myExp.nameAnalysis(st);
+	}
+
 	// one child
 	protected ExpNode myExp;
 }
@@ -1788,19 +1424,14 @@ abstract class BinaryExpNode extends ExpNode {
 		myExp2 = exp2;
 	}
 
-	public int getLineNum() {
-		return this.myLineNum;
-	}
-
-	public int getCharNum() {
-		return this.myCharNum;
+	public void nameAnalysis(SymTable st) {
+		myExp1.nameAnalysis(st);
+		myExp2.nameAnalysis(st);
 	}
 
 	// two kids
 	protected ExpNode myExp1;
 	protected ExpNode myExp2;
-	private int myLineNum;
-	private int myCharNum;
 }
 
 // **********************************************************************
@@ -1812,27 +1443,9 @@ class UnaryMinusNode extends UnaryExpNode {
 		super(exp);
 	}
 
-	/**
-	 * Name Analysis executes name Analysis
-	 */
-	public void nameAnalysis(SymTable st) {
-		this.myExp.nameAnalysis(st);
-	}
-
-	/**
-	 * Type Analysis executes Type Analysis
-	 */
-	public Type typeAnalysis() {
-		// TODO
-	}
-
-	public void unparse(PrintWriter p, int indent, boolean use) {
-		unparse(p, indent);
-	}
-
 	public void unparse(PrintWriter p, int indent) {
 		p.print("(-");
-		myExp.unparse(p, 0, true);
+		myExp.unparse(p, 0);
 		p.print(")");
 	}
 }
@@ -1842,29 +1455,12 @@ class NotNode extends UnaryExpNode {
 		super(exp);
 	}
 
-	/**
-	 * Name Analysis executes name Analysis
-	 */
-	public void nameAnalysis(SymTable st) {
-		// Do nothing
-	}
-
-	/**
-	 * Type Analysis executes Type Analysis
-	 */
-	public Type typeAnalysis() {
-		// TODO
-	}
-
-	public void unparse(PrintWriter p, int indent, boolean use) {
-		unparse(p, indent);
-	}
-
 	public void unparse(PrintWriter p, int indent) {
 		p.print("(!");
-		myExp.unparse(p, 0, true);
+		myExp.unparse(p, 0);
 		p.print(")");
 	}
+
 }
 
 // **********************************************************************
@@ -1876,50 +1472,19 @@ class PlusNode extends BinaryExpNode {
 		super(exp1, exp2);
 	}
 
-	/**
-	 * Name Analysis executes name Analysis
-	 */
-	public void nameAnalysis() {
-		// TODO
-	}
-
-	/**
-	 * Type Analysis executes Type Analysis
-	 */
-	public Type typeAnalysis() {
-		// TODO
-	}
-
-	public void unparse(PrintWriter p, int indent, boolean use) {
-		unparse(p, indent);
-	}
-
 	public void unparse(PrintWriter p, int indent) {
 		p.print("(");
-		myExp1.unparse(p, 0, true);
+		myExp1.unparse(p, 0);
 		p.print(" + ");
-		myExp2.unparse(p, 0, true);
+		myExp2.unparse(p, 0);
 		p.print(")");
 	}
+
 }
 
 class MinusNode extends BinaryExpNode {
 	public MinusNode(ExpNode exp1, ExpNode exp2) {
 		super(exp1, exp2);
-	}
-
-	/**
-	 * Name Analysis executes name Analysis
-	 */
-	public void nameAnalysis() {
-		// TODO
-	}
-
-	/**
-	 * Type Analysis executes Type Analysis
-	 */
-	public Type typeAnalysis() {
-		// TODO
 	}
 
 	public void unparse(PrintWriter p, int indent) {
@@ -1929,25 +1494,12 @@ class MinusNode extends BinaryExpNode {
 		myExp2.unparse(p, 0);
 		p.print(")");
 	}
+
 }
 
 class TimesNode extends BinaryExpNode {
 	public TimesNode(ExpNode exp1, ExpNode exp2) {
 		super(exp1, exp2);
-	}
-
-	/**
-	 * Name Analysis executes name Analysis
-	 */
-	public void nameAnalysis() {
-		// TODO
-	}
-
-	/**
-	 * Type Analysis executes Type Analysis
-	 */
-	public Type typeAnalysis() {
-		// TODO
 	}
 
 	public void unparse(PrintWriter p, int indent) {
@@ -1957,25 +1509,12 @@ class TimesNode extends BinaryExpNode {
 		myExp2.unparse(p, 0);
 		p.print(")");
 	}
+
 }
 
 class DivideNode extends BinaryExpNode {
 	public DivideNode(ExpNode exp1, ExpNode exp2) {
 		super(exp1, exp2);
-	}
-
-	/**
-	 * Name Analysis executes name Analysis
-	 */
-	public void nameAnalysis() {
-		// TODO
-	}
-
-	/**
-	 * Type Analysis executes Type Analysis
-	 */
-	public Type typeAnalysis() {
-		// TODO
 	}
 
 	public void unparse(PrintWriter p, int indent) {
@@ -1992,20 +1531,6 @@ class AndNode extends BinaryExpNode {
 		super(exp1, exp2);
 	}
 
-	/**
-	 * Name Analysis executes name Analysis
-	 */
-	public void nameAnalysis() {
-		// TODO
-	}
-
-	/**
-	 * Type Analysis executes Type Analysis
-	 */
-	public Type typeAnalysis() {
-		// TODO
-	}
-
 	public void unparse(PrintWriter p, int indent) {
 		p.print("(");
 		myExp1.unparse(p, 0);
@@ -2013,25 +1538,12 @@ class AndNode extends BinaryExpNode {
 		myExp2.unparse(p, 0);
 		p.print(")");
 	}
+
 }
 
 class OrNode extends BinaryExpNode {
 	public OrNode(ExpNode exp1, ExpNode exp2) {
 		super(exp1, exp2);
-	}
-
-	/**
-	 * Name Analysis executes name Analysis
-	 */
-	public void nameAnalysis() {
-		// TODO
-	}
-
-	/**
-	 * Type Analysis executes Type Analysis
-	 */
-	public Type typeAnalysis() {
-		// TODO
 	}
 
 	public void unparse(PrintWriter p, int indent) {
@@ -2048,20 +1560,6 @@ class EqualsNode extends BinaryExpNode {
 		super(exp1, exp2);
 	}
 
-	/**
-	 * Name Analysis executes name Analysis
-	 */
-	public void nameAnalysis() {
-		// TODO
-	}
-
-	/**
-	 * Type Analysis executes Type Analysis
-	 */
-	public Type typeAnalysis() {
-		// TODO
-	}
-
 	public void unparse(PrintWriter p, int indent) {
 		p.print("(");
 		myExp1.unparse(p, 0);
@@ -2069,25 +1567,12 @@ class EqualsNode extends BinaryExpNode {
 		myExp2.unparse(p, 0);
 		p.print(")");
 	}
+
 }
 
 class NotEqualsNode extends BinaryExpNode {
 	public NotEqualsNode(ExpNode exp1, ExpNode exp2) {
 		super(exp1, exp2);
-	}
-
-	/**
-	 * Name Analysis executes name Analysis
-	 */
-	public void nameAnalysis() {
-		// TODO
-	}
-
-	/**
-	 * Type Analysis executes Type Analysis
-	 */
-	public Type typeAnalysis() {
-		// TODO
 	}
 
 	public void unparse(PrintWriter p, int indent) {
@@ -2104,20 +1589,6 @@ class LessNode extends BinaryExpNode {
 		super(exp1, exp2);
 	}
 
-	/**
-	 * Name Analysis executes name Analysis
-	 */
-	public void nameAnalysis() {
-		// TODO
-	}
-
-	/**
-	 * Type Analysis executes Type Analysis
-	 */
-	public Type typeAnalysis() {
-		// TODO
-	}
-
 	public void unparse(PrintWriter p, int indent) {
 		p.print("(");
 		myExp1.unparse(p, 0);
@@ -2130,20 +1601,6 @@ class LessNode extends BinaryExpNode {
 class GreaterNode extends BinaryExpNode {
 	public GreaterNode(ExpNode exp1, ExpNode exp2) {
 		super(exp1, exp2);
-	}
-
-	/**
-	 * Name Analysis executes name Analysis
-	 */
-	public void nameAnalysis() {
-		// TODO
-	}
-
-	/**
-	 * Type Analysis executes Type Analysis
-	 */
-	public Type typeAnalysis() {
-		// TODO
 	}
 
 	public void unparse(PrintWriter p, int indent) {
@@ -2160,20 +1617,6 @@ class LessEqNode extends BinaryExpNode {
 		super(exp1, exp2);
 	}
 
-	/**
-	 * Name Analysis executes name Analysis
-	 */
-	public void nameAnalysis() {
-		// TODO
-	}
-
-	/**
-	 * Type Analysis executes Type Analysis
-	 */
-	public Type typeAnalysis() {
-		// TODO
-	}
-
 	public void unparse(PrintWriter p, int indent) {
 		p.print("(");
 		myExp1.unparse(p, 0);
@@ -2188,20 +1631,6 @@ class GreaterEqNode extends BinaryExpNode {
 		super(exp1, exp2);
 	}
 
-	/**
-	 * Name Analysis executes name Analysis
-	 */
-	public void nameAnalysis() {
-		// TODO
-	}
-
-	/**
-	 * Type Analysis executes Type Analysis
-	 */
-	public Type typeAnalysis() {
-		// TODO
-	}
-
 	public void unparse(PrintWriter p, int indent) {
 		p.print("(");
 		myExp1.unparse(p, 0);
@@ -2209,4 +1638,5 @@ class GreaterEqNode extends BinaryExpNode {
 		myExp2.unparse(p, 0);
 		p.print(")");
 	}
+
 }

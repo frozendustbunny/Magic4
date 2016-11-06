@@ -1,5 +1,7 @@
 import java.util.List;
 
+/* TODO COMMENT
+ */
 public class FnSym extends SemSym {
 	    //TODO: Actually store formals list instead of count
 	    private List<FormalDeclNode> formals;
